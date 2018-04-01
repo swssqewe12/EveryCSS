@@ -22,6 +22,22 @@ body {
     width: 108px;
 }
 
+.header .search {
+    display: inline-block;
+    float: right;
+    background: #222;
+    width: 93px;
+    height: 93px;
+    transform: translateX(25px) translateY(-15px);
+    text-align: center;
+}
+
+.header .search img {
+    width: 32px;
+    vertical-align: middle;
+    transform: translateY(30px);
+}
+
 .title {
     padding: 25px;
     width: calc(100% - 50px);

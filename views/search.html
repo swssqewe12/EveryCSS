@@ -1,0 +1,29 @@
+<html>
+<%- include(btu+"/templates/head.ejs") %>
+<body>
+    <%- include(btu+'/templates/header.ejs') %>
+    <%- include(btu+'/templates/title.ejs', {'title': 'Search'}) %>
+    <script>
+        (function () {
+            var cx = '016243117631483413932:ss7vx3ohicw';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        })();
+    </script>
+    <gcse:search></gcse:search>
+</body>
+<script>
+window.addEventListener("load", function()
+{
+    if (! window.location.hash) return;
+    var input = document.querySelector("#gsc-i-id1");
+    var button = document.querySelector("button.gsc-search-button");
+    input.value = decodeURI(window.location.hash.substring(1));
+    button.click();
+})
+</script>
+</html>

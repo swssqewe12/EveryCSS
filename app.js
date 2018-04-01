@@ -14,6 +14,10 @@ app.get('/', function (req, res) {
 	render(res, 'index.html', {'links': links})
 })
 
+app.get('/search', function(req, res) {
+	render(res, 'search.html')
+})
+
 for (var link of links) {
 	route = "/" + link
 	source = link + ".html"
