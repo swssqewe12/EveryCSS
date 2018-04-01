@@ -1,0 +1,7 @@
+<div id="nav">
+    <p>Jump to:</p>
+    <% for (var item of items) { %>
+        <a href="#<%= item.toLowerCase().replace(/\s/g, '') %>"><%= item %></a>
+    <% } %>
+</div>
+<div id="navheight"></div>

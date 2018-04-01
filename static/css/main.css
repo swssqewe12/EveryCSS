@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: "Noto Sans", sans-serif;
+}
+
+.header {
+    width: calc(100% - 50px);
+    height: 58px;
+    padding: 15px 25px;
+    border-top: 5px solid #006EBD;
+    border-top: 5px solid rgb(78, 141, 185);
+    border-bottom: 5px solid white;
+}
+
+.header .logo {
+    width: 108px;
+}
+
+.title {
+    padding: 25px;
+    width: calc(100% - 50px);
+    background: #f5f9fa;
+    color: #333;
+}
+
+.title h1 {
+    font-size: 36px;
+    letter-spacing: -1px;
+}
+
+#nav {
+    position: absolute;
+    top: 197px;
+    left: 0px;
+    width: 100%;
+    background-color: #222;
+    color: white;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+#nav a, #nav p {
+    display: inline-block;
+    margin: 0px 12px;
+    line-height: 41px;
+    border-top: 3px solid #222;
+    border-bottom: 3px solid #222;
+}
+
+#nav a {
+    color: #83d0f2;
+    text-decoration: none;
+}
+
+#nav a:hover {
+    color: white;
+}
+
+#nav a.selected {
+    border-bottom: 3px solid #83d0f2;
+}
+
+#nav p {
+    margin-left: 31px;
+}
+
+#nav.fixed {
+    position: fixed;
+    top: 0px;
+    z-index: 10;
+}
+
+#navheight {
+    height: 47px;
+}
+
+.side {
+    display: inline-block;
+    width: 272px;
+    margin: 20px 24px;
+    vertical-align: top;
+}
+
+.main {
+    display: inline-block;
+    width: calc(100% - 360px);
+    padding: 0px 20px;
+    vertical-align: top;
+}
+
+.main h1 {
+    margin-top: 35px;
+    padding-top: 45px;
+    padding-bottom: 10px;
+    border-top: 3px solid rgb(78, 141, 185);
+    font-size: 34px;
+    color: #333;
+}
+
+.main p {
+    padding-top: 18px;
+}
+
+.main ul {
+    padding-top: 10px;
+    padding-left: 18px;
+}
+
+.main li {
+    padding-top: 8px;
+}
+
+.inline-code, .prettyprint {
+    padding: 0px 2px;
+    border-radius: 2px;
+    background-color: rgba(220, 220, 220, 0.5);
+    font-family: consolas, "Liberation Mono", courier, monospace;
+}
+
+.prettyprint {
+    margin-top: 18px;
+    padding: 5px;
+    line-height: 22px;
+}
+
+.inline-code.bold {
+    font-weight: 700;
+}
+
+.jsfiddle-container {
+    position: relative;
+}
+
+.jsfiddle {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 3px;
+    background: rgba(250, 250, 250,  0.8);
+    color: #0277BD;
+    text-decoration: none;
+}
+
+.jsfiddle:hover {
+    background: white;
+}
+
+.jsfiddle > * {
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 1024px)
+{
+    .side {
+        width: 202px;
+    }
+
+    .main {
+        width: calc(100% - 290px);
+    }
+}
+
+@media screen and (max-width: 767px)
+{
+    #nav {
+        height: 6px;
+        overflow: hidden;
+    }
+
+    .title {
+        width: calc(100% - 30px);
+        padding: 15px;
+        text-align: center;
+    }
+    
+    .title h1 {
+        font-size: 24px;
+    }
+
+    .side {
+        display: none;
+    }
+
+    .main {
+        width: calc(100% - 40px);
+    }
+
+    .main h1 {
+        padding-top: 20px;
+        font-size: 28px;
+    }
+}

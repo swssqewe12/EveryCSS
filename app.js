@@ -6,10 +6,25 @@ app.use(express.static('static'))
 app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'html')
 
+var links = [
+	"css/element-alignment/horizontal"
+]
+
 app.get('/', function (req, res) {
-	res.render('index.html')
+	render(res, 'index.html', {'links': links})
 })
+
+for (var link of links) {
+	route = "/" + link
+	source = link + ".html"
+	app.get(route, (req, res) => render(res, source))
+}
 
 app.listen(process.env.PORT || 8000, function () {
 	console.log('EveryCSS website is running!')
 })
+
+function render(res, source, data={}) {
+	data["btu"] = __dirname + "/views"
+	res.render(source, data)
+}

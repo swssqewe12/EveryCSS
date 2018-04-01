@@ -1,0 +1,104 @@
+<html>
+    <%- include(btu+"/templates/head.ejs") %>
+    <body>
+        <%- include(btu+'/templates/header.ejs') %>
+        <%- include(btu+'/templates/title.ejs', {'title': 'Horizontal Alignment'}) %>
+        <%- include(btu+'/templates/nav.ejs', {'items': ['Inline elements', 'Block elements', 'Fixed and absolute elements']}) %>
+        <div class="container">
+            <%- include(btu+'/templates/side.ejs') -%>
+<!--     --><div class="main">
+                <%- include(btu+'/templates/heading.ejs', {'name': 'Inline elements'}) %>
+                <p> To horizontally align any inline element, use the <span class="inline-code">text-align</span> property on the parent element. </p>
+                <p> This includes <span class="inline-code">inline, inline-block, inline-table, inline-flex</span>, etc.</p> 
+                <ul>
+                    <li><span class="inline-code">text-align: left</span> - Aligns element to the left</li>
+                    <li><span class="inline-code">text-align: center</span> - Aligns element to the center</li>
+                    <li><span class="inline-code">text-align: right</span> - Aligns elements to the right</li>
+                </ul>
+                <p><b>Example 1:</b></p>
+<xmp class="prettyprint"><p> This text is centered </p></xmp>
+<xmp class="prettyprint">p {
+    text-align: center;
+}</xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/71hf344y/'}) %>
+                <p><b>Example 2:</b></p>
+<xmp class="prettyprint"><div>
+    <div class="inline-block"> A </div>
+    <div class="inline-block"> B </div>
+    <div class="inline-block"> C </div>
+</div></xmp>
+<xmp class="prettyprint">div {
+    text-align: center;
+}
+
+.inline-block {
+    display: inline-block;
+}</xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/gy5d5Lk7/4/'}) %>
+                <%- include(btu+'/templates/headingend.ejs') %>
+
+                <%- include(btu+'/templates/heading.ejs', {'name': 'Block elements'}) %>
+                <p>If you have a <span class="inline-code">display: block</span> element and you have specified a width, you can center it by setting <span class="inline-code">margin-left</span> and <span class="inline-code">margin-right</span> to auto.</p>
+<xmp class="prettyprint"><div>
+    This div will be aligned to the center.
+</div></xmp>
+<xmp class="prettyprint">div {
+    width: 200px;
+    margin: 0px auto;
+}</xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/n19p6g40/2/'}) %>
+                <p> To align a block element to the right, just set <span class="inline-code">margin-left: auto</span>.</p>
+<xmp class="prettyprint"><div>
+    This div is aligned to the right.
+</div></xmp>
+<xmp class="prettyprint">div {
+    width: 200px;
+    margin-left: auto;
+}</xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/pL48sgt9/3/'}) %>
+                <p> If you don't specify the width of a block element you won't be able to center it since it would be full width. However, if you'd like the width to be automatically determined by the width of its contents, consider switching to a <span class="inline-code">display: inline-block</span> element and then centering it.</p>
+                <%- include(btu+'/templates/headingend.ejs') %>
+
+                <%- include(btu+'/templates/heading.ejs', {'name': 'Fixed and absolute elements'}) %>
+                <p>There are a few ways of centering fixed and absolutely positioned elements.</p>
+                <p>The first way is to use a css calculation and subtract half of the width of the element from half of the width of the screen.</p>
+<xmp class="prettyprint"><div>
+    This fixed div is centered.
+</div></xmp>
+<xmp class="prettyprint">div {
+    position: fixed;
+    width: 200px;
+    top: 10px;
+    left: calc(50% - 100px);
+}</xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/rye9cmpL/'}) %>
+                <p> However, this isn't very useful if you don't know the width of the element. A simpler solution is to use the <span class="inline-code">transform</span> property.</p>
+<xmp class="prettyprint"><div>
+    This fixed div is centered
+    without specifying its width
+</div></xmp>
+<xmp class="prettyprint">div {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}</xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/jbu7mpaL/'}) %>
+                <p> To align a fixed or absolutely positioned element to the right, simply use the <span class="inline-code">right</span> property to set how far from the right the element should be. </p>
+<xmp class="prettyprint"><div>
+    This fixed div is
+    aligned to the right
+</div></xmp>
+<xmp class="prettyprint">div {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+} </xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/nfygkud0/'}) %>
+                <%- include(btu+'/templates/headingend.ejs') %>
+                <br><br><br>
+            </div>
+        </div>
+    </body>
+    <%- include(btu+'/templates/scripts.ejs') %>
+</html>
