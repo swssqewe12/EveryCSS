@@ -1,7 +1,7 @@
 <div class="header">
     <a href="/"><img src="/img/logo.png" class="logo"></a>
     <span class="search<% if (locals.search == 'expanded') { %> visible expanded<% } %>" >
-        <input type="text">
+        <input type="text" onkeypress="searchKeyDown(event);">
         <% if (locals.search == 'expanded') { %>
             <button onclick="fillGCS();">Search</button>
         <% } else { %>

@@ -11,6 +11,7 @@ function toggleSearch()
     else
     {
         input.classList.add("visible");
+        input.querySelector("input").focus();
         img.src = "/img/cancel.png";
     }
 }
@@ -19,4 +20,10 @@ function goAheadAndSearch()
 {
     var input = document.querySelector(".search input");
     window.location = "/search#" + input.value;
+}
+
+function searchKeyDown(event)
+{
+    if (event.keyCode == 13)
+        goAheadAndSearch();
 }

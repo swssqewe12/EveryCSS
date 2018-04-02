@@ -30,9 +30,10 @@ var s;
 window.addEventListener("load", function()
 {
     s = google.search.cse.element.getElement("everycss-search");
-    if (! window.location.hash) return;
+    input = document.querySelector(".header .search input");
+    if (! window.location.hash) return input.focus();
     term = decodeURI(window.location.hash.substring(1));
-    document.querySelector(".header .search input").value = term;
+    input.value = term;
     s.prefillQuery(term);
     s.execute();
     /*setInterval(function() {
@@ -47,6 +48,12 @@ function fillGCS()
     var term = document.querySelector(".header .search input").value;
     s.prefillQuery(term);
     s.execute();
+    window.location.hash = "#" + term;
+}
+
+function searchKeyDown(event) {
+    if (event.keyCode == 13)
+        fillGCS();
 }
 </script>
 </html>
