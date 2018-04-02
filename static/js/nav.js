@@ -15,6 +15,9 @@ function nav_onscroll()
 {
     navheight.style.height = nav.offsetHeight + "px";
 
+    var ww = window.innerWidth || document.documentElement.clientWidth;
+    if (ww <= 767) return;
+
     if (document.body.scrollTop > 197)
     {
         nav.classList.add("fixed");
@@ -38,7 +41,7 @@ function isElementInViewport(el)
 {
     var rect = el.getBoundingClientRect();
     ww = window.innerWidth || document.documentElement.clientWidth;
-    wh = window.innerHeight || document.documentElement
+    wh = window.innerHeight || document.documentElement.clientHeight
 
     return (
         rect.left < ww &&

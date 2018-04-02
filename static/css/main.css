@@ -242,9 +242,21 @@ body {
     }
 }
 
+@media screen and (max-width: 954px)
+{
+    .jsfiddle {
+        padding: 0px 9px;
+    }
+
+    .jsfiddle > span > span {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 767px)
 {
     #nav {
+        top: 162px;
         height: 6px;
         overflow: hidden;
     }
@@ -270,5 +282,20 @@ body {
     .main h1 {
         padding-top: 20px;
         font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 517px)
+{
+    .jsfiddle {
+        padding: 0px 3px;
+    }
+
+    .jsfiddle > span {
+        display: none;
+    }
+
+    .jsfiddle img {
+        width: 32px;
     }
 }
