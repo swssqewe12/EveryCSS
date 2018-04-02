@@ -1,4 +1,12 @@
 <div class="header">
     <a href="/"><img src="/img/logo.png" class="logo"></a>
-    <a href="/search"><span class="search"><img src="/img/search.png"></span></a>
+    <span class="search<% if (locals.search == 'expanded') { %> visible expanded<% } %>" >
+        <input type="text">
+        <% if (locals.search == 'expanded') { %>
+            <button onclick="fillGCS();">Search</button>
+        <% } else { %>
+            <button onclick="goAheadAndSearch();">Search</button>
+            <img src="/img/search.png" onclick="toggleSearch();">
+        <% } %>
+    </span>
 </div>

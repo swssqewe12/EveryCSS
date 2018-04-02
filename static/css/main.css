@@ -23,19 +23,77 @@ body {
 }
 
 .header .search {
-    display: inline-block;
-    float: right;
+    /*display: inline-block;
+    float: right;*/
+    position: absolute;
+    top: 5px;
+    right: 0px;
     background: #222;
-    width: 93px;
+    width: 100%;
+    max-width: 93px;
     height: 93px;
-    transform: translateX(25px) translateY(-15px);
+    /*transform: translateX(25px) translateY(-15px);*/
     text-align: center;
+    cursor: pointer;
+    transition: max-width 0.4s;
+    overflow: hidden;
+}
+
+.header .search.visible {
+    max-width: 500px;
 }
 
 .header .search img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 30px;
     width: 32px;
-    vertical-align: middle;
-    transform: translateY(30px);
+    /*vertical-align: middle;
+    transform: translateY(30px);*/
+}
+
+.header .search input {
+    position: absolute;
+    top: 29px;
+    right: 153px;
+    width: calc(100% - 183px);
+    height: 35px;
+    border: none;
+    background: #ddd;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    padding-left: 10px;
+}
+
+.header .search.expanded input {
+    right: 80px;
+    width: calc(100% - 110px);
+}
+
+.header .search input:hover {
+    background: #eee;
+}
+
+.header .search input:focus {
+    background: #fff;
+}
+
+.header .search button {
+    position: absolute;
+    top: 29px;
+    right: 93px;
+    width: 60px;
+    height: 35px;
+    border: none;
+    background: #bbb;
+    cursor: pointer;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.header .search.expanded button {
+    right: 20px;
 }
 
 .title {
