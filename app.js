@@ -7,7 +7,8 @@ app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'html')
 
 var links = [
-	"css/element-alignment/horizontal"
+	"css/element-alignment/horizontal",
+	"css/element-alignment/vertical"
 ]
 
 app.get('/', function (req, res) {
@@ -19,9 +20,9 @@ app.get('/search', function(req, res) {
 })
 
 for (var link of links) {
-	route = "/" + link
-	source = link + ".html"
-	app.get(route, (req, res) => render(res, source))
+	route = "/" + link;
+	source = link + ".html";
+	(source => app.get(route, (req, res) => render(res, source)))(source);
 }
 
 app.listen(process.env.PORT || 8000, function () {

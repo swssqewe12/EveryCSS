@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <%- include(btu+"/templates/head.ejs") %>
+    <body>
+        <%- include(btu+'/templates/header.ejs') %>
+        <%- include(btu+'/templates/title.ejs', {'title': 'Vertical Alignment'}) %>
+        <%- include(btu+'/templates/nav.ejs', {'items': ['Text', 'Images', 'Block elements']}) %>
+        <div class="container">
+            <%- include(btu+'/templates/side.ejs') -%>
+<!--     --><div class="main">
+                <%- include(btu+'/templates/heading.ejs', {'name': 'Text'}) %>
+                <p>To vertically align one line of text to the middle of its container, set the <span class="inline-code">line-height</span> property to the height of the container. You then no longer need to specify the <span class="inline-code">height</span> of the container. </p>
+<xmp class="prettyprint"><div> This text is vertically aligned to the middle </div></xmp>
+<xmp class="prettyprint">div {
+    line-height: 200px;
+}</xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/t0rzayn5/1/'}) %>
+                <p>If you have multiple lines of text, wrap it in an element with <span class="inline-code">display: table-cell</span> and set its container to <span class="inline-code">display: table</span>.</p>
+                <p>You can then use the <span class="inline-code">vertical-align</span> property on the text and set it to either <span class="inline-code">top</span>, <span class="inline-code">middle</span> or <span class="inline-code">bottom</span>.</p>
+<xmp class="prettyprint"><div>
+    <span> This is some text that can span multiple lines
+           and is also vertically centered inside its container. </span>
+</div></xmp>
+<xmp class="prettyprint">div {
+    display: table;
+    height: 200px;
+}
+
+span {
+    display: table-cell;
+    vertical-align: middle;
+}</xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/cd2kxxg5/8/'}) %>
+                <%- include(btu+'/templates/headingend.ejs') %>
+                
+                <%- include(btu+'/templates/heading.ejs', {'name': 'Images'}) %>
+                <p>To vertically align one line of images, use the <span class="inline-code">line-height</span> property to specify the height of the image container, and then use the <span class="inline-code">vertical-align</span> property on the images to specify where they should be positioned.</p>
+<xmp class="prettyprint"><div>
+    <img src="...">
+</div></xmp>
+<xmp class="prettyprint">div {
+    line-height: 200px;
+}
+    
+img {
+  vertical-align: middle;
+}</xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/sqvvr4v0/5/'}) %>
+                <p>The different values you can use are <span class="inline-code">top</span>, <span class="inline-code">middle</span> and <span class="inline-code">bottom</span>.</p>
+                <%- include(btu+'/templates/headingend.ejs') %>
+
+                <%- include(btu+'/templates/heading.ejs', {'name': 'Block elements'}) %>
+                <p>To vertically align block elements inside its container, give the container <span class="inline-code">position: relative</span> and then give the child <span class="inline-code">position: absolute</span>. What comes after that depends on whether you are centering the element, or aligning it to the bottom. </p>
+                <p><b>Vertically aligning to center:</b></p>
+                <p>To vertically align an element to the center of its container, set <span class="inline-code">top: 50%</span> for the child and then, since the anchor point of an element is at the top left, you must also shift the child upwards by half its height.</p>
+                <p>The original way of doing this was by applying a negative margin of half the child's height. </p>
+<!--<xmp class="prettyprint"><div class="container">
+    <div class="child"> 
+        Content
+    </div>
+</div></xmp>
+<xmp class="prettyprint">.container {
+    position: relative;
+    height: 250px;
+}
+
+.child {
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+}</xmp>-->
+                <br><br><br>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/ju4fg6kx/9/'}) %>
+                <p>However, a more modern and much more elegant solution (which doesn't require you to specify the height of the child) is to use the <span class="inline-code">transform</span> property to translate the child upwards.</p>
+<xmp class="prettyprint"><div class="container">
+    <div class="child"> 
+        Content
+    </div>
+</div></xmp>
+<xmp class="prettyprint">.container {
+    position: relative;
+    height: 250px;
+}
+
+.child {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}</xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/ju4fg6kx/10/'}) %>
+                <p>The final way of centering the child is to stretch it to all 4 edges of the container. By using <span class="inline-code">margin: auto</span> the child will be centered since its width and height are smaller than the container and won't be able to reach the edges.</p>
+<xmp class="prettyprint">.child {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    width: 100px; height: 100px;
+    margin: auto;
+}</xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/ju4fg6kx/13/'}) %>
+                <p><b>Aligning to the bottom:</b></p>
+                <p>This is very simple to achieve. All you have to do is set <span class="inline-code">bottom: 0px</span> on the child element (or however far you want it from the bottom).</p>
+<xmp class="prettyprint"><div class="container">
+    <div class="child"> 
+        Content
+    </div>
+</div></xmp>
+<xmp class="prettyprint">.container {
+    position: relative;
+    height: 250px;
+}
+
+.child {
+    position: absolute;
+    bottom: 0px;
+}</xmp>
+                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/9m95muxa/4/'}) %>
+                <%- include(btu+'/templates/headingend.ejs') %>
+                <br><br><br>
+            </div>
+        </div>
+    </body>
+    <%- include(btu+'/templates/scripts.ejs') %>
+</html>

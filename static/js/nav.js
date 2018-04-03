@@ -9,15 +9,15 @@ window.addEventListener("load", function()
     
 })
 
-window.addEventListener("scroll", nav_onscroll)
 
 function nav_onscroll()
 {
     navheight.style.height = nav.offsetHeight + "px";
-
+    
     var ww = window.innerWidth || document.documentElement.clientWidth;
+    var st = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-    if (document.body.scrollTop > 197 && ww > 767)
+    if (st > 197 && ww > 767)
     {
         nav.classList.add("fixed");
     }
@@ -25,9 +25,7 @@ function nav_onscroll()
     {
         nav.classList.remove("fixed");
     }
-
-    if (ww <= 767) return;
-
+    
     for (var link of nav_links) {
         if (isElementInViewport(link[1])) {
             link[0].classList.add("selected");
@@ -37,6 +35,8 @@ function nav_onscroll()
         }
     }
 }
+
+window.addEventListener("scroll", nav_onscroll)
 
 function isElementInViewport(el)
 {
@@ -48,6 +48,6 @@ function isElementInViewport(el)
         rect.left <= ww &&
         rect.right >= 0 &&
         rect.top <= wh - 150 &&
-        rect.bottom >= 100
+        rect.bottom >= 150
     );
 }
