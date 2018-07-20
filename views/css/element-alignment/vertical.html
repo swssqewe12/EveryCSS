@@ -8,6 +8,10 @@
         <div class="container">
             <%- include(btu+'/templates/side.ejs') -%>
 <!--     --><div class="main">
+	
+				<div class="incomplete">
+					This article is incomplete and is missing <b>inline elements</b>, <b>fixed and absolute elements</b>, <b>flex items</b> and <b>grid items</b>.
+				</div>
                 <%- include(btu+'/templates/heading.ejs', {'name': 'Text'}) %>
                 <p>To vertically align one line of text to the middle of its container, set the <span class="inline-code">line-height</span> property to the height of the container. You then no longer need to specify the <span class="inline-code">height</span> of the container. </p>
 <xmp class="prettyprint"><div> This text is vertically aligned to the middle </div></xmp>

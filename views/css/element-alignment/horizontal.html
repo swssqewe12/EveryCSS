@@ -8,13 +8,16 @@
         <div class="container">
             <%- include(btu+'/templates/side.ejs') -%>
 <!--     --><div class="main">
+				<div class="incomplete">
+					This article is incomplete and is missing the <span class="inline-code">justify-items</span> and <span class="inline-code">justify-self</span> properties for flex items only, and is also missing the <span class="inline-code">float</span> property.
+				</div>
                 <%- include(btu+'/templates/heading.ejs', {'name': 'Inline elements'}) %>
-                <p> To horizontally align any inline element, use the <span class="inline-code">text-align</span> property on the parent element. </p>
-                <p> This includes <span class="inline-code">inline, inline-block, inline-table, inline-flex</span>, etc.</p> 
+                <p> To horizontally align any inline element within its parent, use the <span class="inline-code">text-align</span> property on the parent element. </p>
+                <p> This includes elements displayed as <span class="inline-code">inline</span>, <span class="inline-code">inline-block</span>, <span class="inline-code">inline-table</span>, <span class="inline-code">inline-flex</span> and <span class="inline-code">inline-grid</span></p> 
                 <ul>
-                    <li><span class="inline-code">text-align: left</span> - Aligns element to the left</li>
-                    <li><span class="inline-code">text-align: center</span> - Aligns element to the center</li>
-                    <li><span class="inline-code">text-align: right</span> - Aligns elements to the right</li>
+                    <li><span class="inline-code">text-align: left</span> - aligns element to the left</li>
+                    <li><span class="inline-code">text-align: center</span> - aligns element to the center</li>
+                    <li><span class="inline-code">text-align: right</span> - aligns elements to the right</li>
                 </ul>
                 <p><b>Example 1:</b></p>
 <xmp class="prettyprint"><p> This text is centered </p></xmp>
@@ -35,20 +38,28 @@
 .inline-block {
     display: inline-block;
 }</xmp>
-                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/gy5d5Lk7/4/'}) %>
+				<%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/gy5d5Lk7/4/'}) %>
                 <%- include(btu+'/templates/headingend.ejs') %>
 
                 <%- include(btu+'/templates/heading.ejs', {'name': 'Block elements'}) %>
-                <p>If you have a <span class="inline-code">display: block</span> element and you have specified a width, you can center it by setting <span class="inline-code">margin-left</span> and <span class="inline-code">margin-right</span> to auto.</p>
-<xmp class="prettyprint"><div>
-    This div will be aligned to the center.
+                <p> To horizontally align any block element that has a specified width within its parent, use the <span class="inline-code">margin</span> property. </p>
+				<p> This includes elements displayed as <span class="inline-code">block</span>, <span class="inline-code">flex</span>, <span class="inline-code">grid</span> and <span class="inline-code">table</span></p>
+				<ul>
+                    <li><span class="inline-code">margin-right: auto</span> - pushes element to the left of its available space</li>
+                    <li><span class="inline-code">margin-left: auto</span> and <span class="inline-code">margin-right: auto</span> - pushes element to the center of its available space</li>
+                    <li><span class="inline-code">margin-left: auto</span> - pushes element to the right of its available space</li>
+                </ul>
+                <p><b>Example 1:</b></p>
+                <xmp class="prettyprint"><div>
+    This div is aligned to the center.
 </div></xmp>
 <xmp class="prettyprint">div {
     width: 200px;
     margin: 0px auto;
 }</xmp>
                 <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/n19p6g40/2/'}) %>
-                <p> To align a block element to the right, just set <span class="inline-code">margin-left: auto</span>.</p>
+                
+                <p><b>Example 2:</b></p>
 <xmp class="prettyprint"><div>
     This div is aligned to the right.
 </div></xmp>
@@ -57,12 +68,38 @@
     margin-left: auto;
 }</xmp>
                 <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/pL48sgt9/3/'}) %>
-                <p> If you don't specify the width of a block element you won't be able to center it since it would be full width. However, if you'd like the width to be automatically determined by the width of its contents, consider switching to a <span class="inline-code">display: inline-block</span> element and then centering it.</p>
+				<p><b>Example 3:</b></p>
+<xmp class="prettyprint"><div class="container">
+    <div> LEFT </div>
+    <div> CENTER </div>
+    <div> CENTER </div>
+</div></xmp>
+<xmp class="prettyprint">.container {
+    display: flex;
+}
+
+.container > div:nth-child(1) {
+    margin-right: auto;
+}
+
+.container > div:nth-child(3) {
+    margin-right: auto;
+}</xmp>
+				<%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/u6sgb503/3/'}) %>	
+				<br><hr><br>
+				<p> If you don't specify the width of a <span class="inline-code">display: block</span> element it can't be horizontally aligned since it stretches to fit its parent instead.</p>
+				<p> If you'd like the width to be automatically determined by the width of its contents, consider switching to an <%- include(btu+'/templates/jump.ejs', {'jump': 'Inline elements', 'name': 'inline element'}) %> or a <%- include(btu+'/templates/jump.ejs', {'jump': 'Flex items', 'name': 'flex item.'}) %></p>
                 <%- include(btu+'/templates/headingend.ejs') %>
 
-                <%- include(btu+'/templates/heading.ejs', {'name': 'Fixed and absolute elements'}) %>
-                <p>There are a few ways of centering fixed and absolutely positioned elements.</p>
-                <p>The first way is to set the <span class="inline-code">left</span> property to half of the parent element's width minus half of the element's width.</p>
+				<%- include(btu+'/templates/heading.ejs', {'name': 'Fixed and absolute elements'}) %>
+				<p> <!--This section applies to--> To horizontally align elements positioned <span class="inline-code">fixed</span> and <span class="inline-code">absolute</span> within its parent or the window, use the following properties.</p>
+				<ul>
+					<li><span class="inline-code">left: 0px</span> - aligns element to the left</li>
+					<li><span class="inline-code">left: calc(50% - <span style="color:#3ca1c3;">HALF_OF_ELEMENT_WIDTH</span>)</span> - aligns element to the center</li>
+					<li><span class="inline-code">left: 50%</span> and <span class="inline-code">transform: translateX(-50%)</span> - aligns element to the center</li>
+					<li><span class="inline-code">right: 0px</span> - aligns elements to the right</li>
+				</ul>
+				<p><b>Example 1:</b></p>
 <xmp class="prettyprint"><div>
     This fixed div is centered.
 </div></xmp>
@@ -73,10 +110,10 @@
     left: calc(50% - 100px);
 }</xmp>
                 <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/rye9cmpL/'}) %>
-                <p> However, this isn't very useful if you don't know the width of the element. A simpler solution is to use the <span class="inline-code">transform</span> property.</p>
+				<p><b>Example 2:</b></p>
 <xmp class="prettyprint"><div>
     This fixed div is centered
-    without specifying its width
+    without knowing its width.
 </div></xmp>
 <xmp class="prettyprint">div {
     position: fixed;
@@ -85,10 +122,10 @@
     transform: translateX(-50%);
 }</xmp>
                 <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/jbu7mpaL/'}) %>
-                <p> To align a fixed or absolutely positioned element to the right, simply use the <span class="inline-code">right</span> property to set how far from the right the element should be. </p>
+				<p><b>Example 3:</b></p>
 <xmp class="prettyprint"><div>
     This fixed div is
-    aligned to the right
+    aligned to the right.
 </div></xmp>
 <xmp class="prettyprint">div {
     position: fixed;
@@ -99,7 +136,16 @@
                 <%- include(btu+'/templates/headingend.ejs') %>
 
                 <%- include(btu+'/templates/heading.ejs', {'name': 'Flex items'}) %>
-                <p> If you have flex item(s) inside a flex container with <span class="inline-code">flex-direction: row</span> (default) you can use the <span class="inline-code">justify-content</span> property on the container to align the items horizontally.</p>
+                <p> If you have a flex container with <span class="inline-code">flex-direction: row</span> (default) you can use the <span class="inline-code">justify-content</span> property to align its flex <b>items</b> horizontally.</p>
+				<p> All the property values are: </p>
+                <ul>
+                    <li><span class="inline-code">flex-start</span> - items are positioned at the beginning of the container</li>
+                    <li><span class="inline-code">flex-end</span> - items are positioned at the end of the container</li>
+                    <li><span class="inline-code">center</span> - items are positioned at the center of the container </li>
+                    <li><span class="inline-code">space-between</span> - items are positioned with equal space between the lines</li>
+                    <li><span class="inline-code">space-around</span> - items are positioned with equal space around the lines</li>
+				</ul>
+				<p><b>Example:</b></p>
 <xmp class="prettyprint"><div class="container">
     <div> A </div>
     <div> B </div>
@@ -109,16 +155,19 @@
     width: 100%;
     justify-content: center;
 }</xmp>
-                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/kmr1rhz7/10/'}) %>
+				<%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/kmr1rhz7/10/'}) %>
+				<p>Additionally, you can push the flex items individually using the <span class="inline-code">margin</span> property to create a more complex layout. <%- include(btu+'/templates/jump.ejs', {'jump': 'Block elements', 'name': 'See details here.'}) %></p>
+				<br><hr><br>
+                <p>If you have a flex container with <span class="inline-code">flex-direction: column</span> you can use the <span class="inline-code">align-items</span> property to align its flex <b>items</b> horizontally.</p>
                 <p> All the property values are: </p>
                 <ul>
-                    <li><span class="inline-code">flex-start</span> or <span class="inline-code">left</span> - Items are positioned at the beginning</li>
-                    <li><span class="inline-code">flex-end</span> or <span class="inline-code">right</span> - Items are positioned at the end</li>
-                    <li><span class="inline-code">center</span> - Items are positioned at the center </li>
-                    <li><span class="inline-code">space-between</span> - Items are positioned with equal space between them</li>
-                    <li><span class="inline-code">space-around</span> - Items are positioned with equal space around them</li>
-                </ul>
-                <p>If you have a container with <span class="inline-code">flex-direction: column</span> you can use the <span class="inline-code">align-items</span> property.</p>
+                    <li><span class="inline-code">stretch</span> (default) - items are stretched to fit the container</li>
+                    <li><span class="inline-code">flex-start</span> - items are positioned at the beginning (left) of the container </li>
+                    <li><span class="inline-code">flex-end</span> - items are positioned at the end (right) of the container </li>
+                    <li><span class="inline-code">center</span> - items are positioned at the center of the container </li>
+                    <li><span class="inline-code">baseline</span> - items are positioned at the <a href="https://stackoverflow.com/a/34611670/1541397" target="_blank">baseline</a> of the container </li>
+				</ul>
+				<p><b>Example:</b></p>
 <xmp class="prettyprint"><div class="container">
     <div> A </div>
     <div> B </div>
@@ -129,22 +178,21 @@
     flex-direction: column;
     align-items: center;
 }</xmp>
-                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/gx80whvm/'}) %>
-                <p> All the values you can use are: </p>
-                <ul>
-                    <li><span class="inline-code">stretch</span> (default) - Items are stretched to fit the container</li>
-                    <li><span class="inline-code">flex-start</span>, <span class="inline-code">baseline</span> or <span class="inline-code">left</span> - Items are positioned at the beginning </li>
-                    <li><span class="inline-code">flex-end</span> or <span class="inline-code">right</span> - Items are positioned at the end </li>
-                    <li><span class="inline-code">center</span> - Items are positioned at the center </li>
-                </ul>
-                <p>You can also align items individually by using the <span class="inline-code">align-self</span> property.</p>
-                <br><br><br>
-                <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/r95g5bp2/3/'}) %>
+				<%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/gx80whvm/'}) %>
+				<p>Alternatively, you can align the flex items individually using the <span class="inline-code">align-self</span> property. The possible values are the same as above.</p>
+				<br><br><br>
+				<%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/r95g5bp2/6/'}) %>		
                 <%- include(btu+'/templates/headingend.ejs') %>
                 
                 <%- include(btu+'/templates/heading.ejs', {'name': 'Grid items'}) %>
-                <p>To align items on the inline or row axis use <span class="inline-code">justify-items</span> on the grid container or use <span class="inline-code">justify-self</span> on the individual grid items.</p>
-                <p>Items will be aligned inside the total space given to them.</p>
+                <p>To align items on the inline / row / horizontal axis use <span class="inline-code">justify-items</span> on the grid container or use <span class="inline-code">justify-self</span> on the individual grid items. Items will be aligned inside the total space given to them.</p>
+				<p>All the property values are:</p>
+                <ul>
+                    <li><span class="inline-code">stretch</span> - the item is stretched to fill its available space</li>
+                    <li><span class="inline-code">start</span> or <span class="inline-code">left</span> - the item is positioned at the beginning of its available space</li>
+                    <li><span class="inline-code">end</span> or <span class="inline-code">right</span> - the item is positioned at the end of its available space</li>
+                    <li><span class="inline-code">center</span> - the item is positioned at the center of its available space</li>
+                </ul>
                 <p><b>Example 1:</b></p>
 <xmp class="prettyprint"><div class="grid">
     <div> Item 1 </div>
@@ -174,15 +222,8 @@
 .item3 {justify-self: center;}
 .item4 {justify-self: stretch;}</xmp>
                 <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/0njhtebw/1/'}) %>
-                <p>Here are the available values that you can set:</p>
-                <ul>
-                    <li><span class="inline-code">start</span> or <span class="inline-code">left</span> - The item is positioned at the beginning of the available space</li>
-                    <li><span class="inline-code">end</span> or <span class="inline-code">right</span> - The item is positioned at the end of the available space</li>
-                    <li><span class="inline-code">center</span> - The item is positioned at the center of the available space</li>
-                    <li><span class="inline-code">stretch</span> - The item is stretched to fill the available space</li>
-                </ul>
                 <%- include(btu+'/templates/headingend.ejs') %>
-                <br><br><br>
+				<br><br><br>
             </div>
         </div>
     </body>

@@ -9,6 +9,11 @@ body {
     font-family: "Noto Sans", sans-serif;
 }
 
+a {
+	text-decoration: none;
+	color: blue;
+}
+
 .header {
     width: calc(100% - 50px);
     height: 58px;
@@ -299,4 +304,12 @@ body {
     .jsfiddle img {
         width: 32px;
     }
+}
+
+.incomplete {
+	margin-top: 30px;
+	padding: 12px;
+	color: darkred;
+	background: rgba(255, 0, 0, 0.3);
+	border-radius: 12px;
 }
