@@ -4,12 +4,12 @@
     <body>
         <%- include(btu+'/templates/header.ejs') %>
         <%- include(btu+'/templates/title.ejs', {'title': 'Horizontal Alignment'}) %>
-        <%- include(btu+'/templates/nav.ejs', {'items': ['Inline elements', 'Block elements', 'Fixed and absolute elements', 'Flex items', 'Grid items']}) %>
+        <%- include(btu+'/templates/nav.ejs', {'items': ['Inline elements', 'Block elements', 'Fixed and absolute elements', 'Flex items', 'Grid items', 'Floating']}) %>
         <div class="container">
             <%- include(btu+'/templates/side.ejs') -%>
 <!--     --><div class="main">
 				<div class="incomplete">
-					This article is incomplete and is missing the <span class="inline-code">justify-items</span> and <span class="inline-code">justify-self</span> properties for flex items only, and is also missing the <span class="inline-code">float</span> property.
+					This article is incomplete and is missing the <span class="inline-code">justify-items</span> and <span class="inline-code">justify-self</span> properties for flex items only, and is also missing <b>tables</b>.
 				</div>
                 <%- include(btu+'/templates/heading.ejs', {'name': 'Inline elements'}) %>
                 <p> To horizontally align any inline element within its parent, use the <span class="inline-code">text-align</span> property on the parent element. </p>
@@ -222,7 +222,64 @@
 .item3 {justify-self: center;}
 .item4 {justify-self: stretch;}</xmp>
                 <%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/0njhtebw/1/'}) %>
-                <%- include(btu+'/templates/headingend.ejs') %>
+				<%- include(btu+'/templates/headingend.ejs') %>
+				
+
+
+
+				
+				<%- include(btu+'/templates/heading.ejs', {'name': 'Floating'}) %>
+				<p> The CSS <span class="inline-code"><b>float</b></span> property floats an element to the left or to the right, allowing text to wrap around it. 
+				<p>All the property values are:</p>
+				<ul>
+					<li><span class="inline-code">left</span> - the element floats to the left of its container</li>
+					<li><span class="inline-code">right</span> - the element floats to the right of its container</li>
+				</ul>
+				<p><b>Example:</b></p>
+<xmp class="prettyprint"><img src="http://placehold.it/50x50">
+This text will wrap around the image.</xmp>
+<xmp class="prettyprint">img {
+    float: left;
+}</xmp>
+				<%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/e1854agc/12/'}) %>
+				<%- include(btu+'/templates/headingend.ejs') %>
+				<br><hr><br>
+				<p> The CSS <span class="inline-code"><b>clear</b></span> property is used on an element to specify what elements can float beside it. This property can be used to ensure an element doesn't wrap around floated elements, and instead, gets pushed underneath them. Note: This property only clears elements <i>preceding</i> it in the document structure and can only be applied to <span class="inline-code">display: block</span> elements.</p>
+				<p>All the property values are:</p>
+				<ul>
+					<li><span class="inline-code">left</span> - pushes the element under any <span class="inline-code">float: left</span> elements </li>
+					<li><span class="inline-code">right</span> - pushes the element under any <span class="inline-code">float: right</span> elements </li>
+					<li><span class="inline-code">both</span> - pushes the element underneath any floated elements</li>
+				</ul>
+				<p><b>Example:</b></p>
+<xmp class="prettyprint"><img src="http://placehold.it/120x110">
+This text will wrap around the image.
+	
+<div class="clear">
+    This text isn't allowed to wrap around floated elements, and therefore is pushed underneath the image.
+</div></xmp>
+<xmp class="prettyprint">img {
+    float: right;
+}
+	  
+.clear {
+    clear: right;
+}</xmp>
+				<%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/79gdnyt1/32/'}) %>
+				<br><hr><br>
+				<p> Apply either of the following <b>clearfix</b> classes on the container of floating elements to ensure it expands to fit them.</p>
+<xmp class="prettyprint">/* May not work well with margins and paddings */
+.clearfix {
+    overflow: auto;
+}</xmp>
+				<%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/s56cthj0/6/'}) %>
+<xmp class="prettyprint">/* The new, modern clearfix hack */
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}</xmp>
+				<%- include(btu+'/templates/jsfiddlelink.ejs', {'link': 'https://jsfiddle.net/s56cthj0/10/'}) %>
 				<br><br><br>
             </div>
         </div>
